@@ -16,30 +16,78 @@
 
   <!-- Flash sound -->
   <audio id="meowSound" preload="auto">
-    <source src="flash.m4a" type="audio/mp4">
+    <source src="asset/mp3/flash.m4a" type="audio/mp4">
   </audio>
 
-  <!-- Meow sound -->
-  <audio id="catMeow" preload="auto">
-    <source src="https://www.myinstants.com/media/sounds/meow.mp3" type="audio/mpeg">
+  <!-- Plankton augh sound -->
+  <audio id="planktonAugh" preload="auto">
+    <source src="asset/mp3/plankton-augh.mp3" type="audio/mpeg">
   </audio>
+
+  <!-- Losing sound (short buzzer) -->
+  <audio id="loseSound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=" type="audio/wav">
+  </audio>
+
+  <!-- Language Selector Screen -->
+  <div class="iq-screen" id="langScreen">
+    <div class="iq-card">
+      <h2 class="iq-title">Select Language / Dil Seçin</h2>
+      <div class="lang-grid">
+        <button class="lang-btn active" data-lang="en"><span class="lang-code">EN</span> English</button>
+        <button class="lang-btn" data-lang="az"><span class="lang-code">AZ</span> Azərbaycan</button>
+        <button class="lang-btn" data-lang="tr"><span class="lang-code">TR</span> Türkçe</button>
+        <button class="lang-btn" data-lang="ru"><span class="lang-code">RU</span> Русский</button>
+      </div>
+      <button class="btn btn-yes" id="btnContinue">Continue</button>
+    </div>
+  </div>
+
+  <!-- IQ Test Welcome Screen -->
+  <div class="iq-screen hidden" id="iqWelcomeScreen">
+    <div class="iq-card">
+      <h2 class="iq-title" data-i18n="welcomeTitle">15 Second IQ Test</h2>
+      <p class="iq-intro"><span data-i18n="welcomeIntro">Hello _______,<br>this is just a 15 second IQ test.</span></p>
+      <p class="iq-note" data-i18n="welcomeNote">Note: Wrong answers restart the test.</p>
+      <button class="btn btn-yes" id="btnStartTest" data-i18n="startTest">Start Test</button>
+      <button class="lang-switcher" id="langSwitcherWelcome">🌐</button>
+    </div>
+  </div>
+
+  <!-- IQ Test Question Screen -->
+  <div class="iq-screen hidden" id="iqQuestionScreen">
+    <div class="iq-card">
+      <button class="lang-switcher" id="langSwitcherTest">🌐</button>
+      <div class="timer-bar">
+        <div class="timer-fill" id="timerFill"></div>
+        <span class="timer-text" id="timerText">15s</span>
+      </div>
+      <h3 class="iq-question" id="iqQuestionText">Question text here</h3>
+      <div class="feedback" id="feedback"></div>
+      <div class="btn-group">
+        <button class="btn btn-yes" id="btnYesIQ" data-i18n="yes">YES</button>
+        <button class="btn btn-no in-flow" id="btnNoIQ" data-i18n="no">NO</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Main card -->
-  <div class="card" id="mainCard">
+  <div class="card hidden" id="mainCard">
+    <button class="lang-switcher" id="langSwitcherFinal">🌐</button>
     <span class="emoji-top">💕</span>
-    <h1>Will you be my girlfriend?</h1>
-    <p class="subtitle">Choose wisely… 😉</p>
+    <h1 data-i18n="finalTitle">Will you be my girlfriend?</h1>
+    <p class="subtitle" data-i18n="subtitle">Choose wisely… 😉</p>
 
     <div class="btn-group" id="btnGroup">
-      <button class="btn btn-yes" id="btnYes">YES 💖</button>
-      <button class="btn btn-no in-flow" id="btnNo">NO 😈</button>
+      <button class="btn btn-yes" id="btnYes"><span data-i18n="yes">YES</span> 💖</button>
+      <button class="btn btn-no in-flow" id="btnNo"><span data-i18n="no">NO</span> 😈</button>
     </div>
 
     <div class="warning-box" id="warningBox">
-      <strong>😾 Really?! You're trying to say NO?!</strong><br/>
-      <span id="warningText">The cat is NOT impressed. Try again!</span><br/>
+      <strong data-i18n="warningTitle">😾 Really?! You're trying to say NO?!</strong><br/>
+      <span id="warningText" data-i18n="warningText">The cat is NOT impressed. Try again!</span><br/>
       <div class="cat-art" aria-label="Angry cat">
-        <img src="cat-gun.png" alt="Angry cat with gun" width="500" height="400">
+        <img src="asset/png/cat-gun.png" alt="Angry cat with gun" width="500" height="400">
       </div>
     </div>
 
@@ -49,13 +97,18 @@
   <!-- Success screen -->
   <div id="success-screen">
     <span class="success-emoji">❤️</span>
-    <h2 class="success-title">She said YES! 🎉</h2>
-    <p class="success-message">
+    <h2 class="success-title" data-i18n="successTitle">She said YES! 🎉</h2>
+    <p class="success-message" data-i18n="successMessage">
       You made the best decision of your life! 💕<br/>
       I promise to make every moment magical. 🌹
     </p>
   </div>
 
+  <!-- User Configuration (fill in your own details) -->
+  <script src="config.js"></script>
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
