@@ -294,6 +294,19 @@ if (currentLanguage && localStorage.getItem('selectedLanguage')) {
   applyTranslations();
 }
 
+// Start SpongeBob background music on first user interaction
+let musicStarted = false;
+function startMusic() {
+  if (!musicStarted) {
+    spongebobMusic.play().catch(e => console.log('Audio play failed:', e));
+    musicStarted = true;
+  }
+}
+
+// Start music on first click anywhere on the page
+document.addEventListener('click', startMusic, { once: true });
+document.addEventListener('touchstart', startMusic, { once: true });
+
 // Start Test
 btnStartTest.addEventListener('click', () => {
   startIQTest();
@@ -452,6 +465,7 @@ const successScr  = document.getElementById('success-screen');
 const heartsBg    = document.getElementById('heartsBg');
 const meowSound   = document.getElementById('meowSound');
 const planktonAugh = document.getElementById('planktonAugh');
+const spongebobMusic = document.getElementById('spongebobMusic');
 const flashOverlay = document.getElementById('flashOverlay');
 
 /* ────────────────────────────────────────────
@@ -598,6 +612,9 @@ function updateAttempts() {
   attemptsLbl.textContent = '';
 
   if (attempts >= WARN_AFTER) {
+    // Stop SpongeBob music when NO is pressed on final question
+    spongebobMusic.pause();
+
     // Play flash sound only once when cat first appears
     if (!soundPlayed) {
       console.log('Attempting to play flash sound...');

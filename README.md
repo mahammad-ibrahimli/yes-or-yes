@@ -15,6 +15,22 @@ A fun interactive game to ask "Will you be my girlfriend?". The "No" button is i
 3. **IQ Test** - 15-second simple test, then the main question appears
 4. **Main question** - "Will you be my girlfriend?" - Yes is green, No is red and runs away!
 
+### 🌐 Running with Ngrok (Public URL)
+
+To share your project with others via a public URL:
+
+1. **Setup ngrok authentication** (one-time):
+   ```bash
+   c:\Users\Admin\ngrok\ngrok.exe config add-authtoken YOUR_AUTH_TOKEN
+   ```
+   Get your authtoken from https://dashboard.ngrok.com/get-started/your-authtoken
+
+2. **Start the server**:
+   - Double-click `start-server.bat` (Windows Batch)
+   - Or run: `powershell -ExecutionPolicy Bypass -File start-server.ps1`
+
+3. **Share the URL**: ngrok will display a public URL like `https://xxxx-xx-xx-xx-xx.ngrok-free.app`
+
 ### ✨ Features
 
 | Feature | Description |
@@ -34,6 +50,8 @@ A fun interactive game to ask "Will you be my girlfriend?". The "No" button is i
 ├── style.css       # Styles
 ├── script.js       # Main code
 ├── asset/          # Images and sounds
+├── start-server.bat  # Windows batch script to start server with ngrok
+├── start-server.ps1  # PowerShell script to start server with ngrok
 └── README.md       # This file
 ```
 
@@ -141,6 +159,12 @@ Sevgiliye "Benimle çıkar mısın?" sorusu için oyun. "Hayır" butonuna basmak
 ├── asset/          # Картинки и звуки
 └── README.md       # Этот файл
 ```
+
+---
+
+## 💡 Perspektiv İdeyalar / Future Concepts
+
+* **İnteraktiv İşıq/Alov Aşkarlama (TouchDesigner / CV Light Reveal):** Veb-kamera vasitəsilə çaxmaq alovunun koordinatını tutaraq ekrandakı gizli mesajı işıqla açma mexanizmi və SuperAdmin aktiv/deaktiv idarəetmə arxitekturası. Ətraflı: [INTERACTIVE_LIGHT_REVEAL_IDEA.md](./INTERACTIVE_LIGHT_REVEAL_IDEA.md)
 
 ---
 
